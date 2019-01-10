@@ -15,7 +15,7 @@ To run
 ## Built With
 * React.js
 * Scss
-* Bootstrap 4
+* Materialize css
 * Redux
 
 ## Author
