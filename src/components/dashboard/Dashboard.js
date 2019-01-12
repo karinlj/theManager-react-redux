@@ -3,6 +3,9 @@ import Notifications from "./Notifications";
 import ProjectList from "../project/ProjectList";
 //connect to the store
 import { connect } from "react-redux"; //the glue
+//which collection we want to connect to here
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 
 class Dashboard extends Component {
   state = {};
@@ -25,12 +28,19 @@ class Dashboard extends Component {
 }
 
 //map the state from the store to the props of this comp
-const mapStateToStore = state => {
+const mapStateToProps = state => {
+  console.log("state", state);
   return {
     //return an object
     //which properties are attached to the props of this comp
     //look in rootReducer and projectReducer
-    projects: state.project.projects
+    // projects: state.project.projects  //from dummy data
+    projects: state.firestore.ordered.projects //from firestore
   };
 };
-export default connect(mapStateToStore)(Dashboard);
+//composing two higher order components
+export default compose(
+  connect(mapStateToProps),
+  //passing in which collection we want to connect to
+  firestoreConnect([{ collection: "projects" }])
+)(Dashboard);

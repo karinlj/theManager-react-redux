@@ -18,6 +18,7 @@ class CreateProject extends Component {
   handleSubmit = e => {
     e.preventDefault();
     //console.log(this.state);
+    //calling createProject from below
     this.props.createProject(this.state);
   };
   render() {
@@ -57,7 +58,7 @@ const mapDispatchToProps = dispatch => {
     //that returns a function with a async call
     //then carry on with the dispatch on the action
 
-    createProject: project => dispatch(createProject(project))
+    createProject: project => dispatch(createProject(project)) //project=this.state Hur fatta??
   };
 };
 export default connect(null, mapDispatchToProps)(CreateProject);
