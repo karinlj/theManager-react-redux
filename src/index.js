@@ -30,19 +30,21 @@ const store = createStore(
     //passing in our config for our firebase
     reduxFirestore(fbConfig),
     //third store enchanser:
-    reactReduxFirebase(fbConfig)
+    reactReduxFirebase(fbConfig, { attachAuthIsReady: true })
   )
 );
+//wait with rendering the app until firebase is ready
+store.firebaseAuthIsReady.then(() => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById("root")
+  );
+});
 
 //different reducers for different parts of our app to handle small actions
 //combine them into a rootReducer
-
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById("root")
-);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

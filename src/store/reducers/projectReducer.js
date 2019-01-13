@@ -1,5 +1,5 @@
 const initState = {
-  //initial state because no state at first
+  //initial state because no state at first - dummy data
   projects: [
     { id: 1, title: "My first project", content: "bla bla bla bla" },
     { id: 2, title: "My second project", content: "bla bla bla bla" },

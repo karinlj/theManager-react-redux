@@ -31,3 +31,13 @@ form textarea.materialize-textarea:focus:not([readonly]) {
 .project-details {
   margin: calc(60px - 1rem) auto;
 }
+.signout {
+  cursor: pointer;
+  background: #424242;
+  border: none;
+  color: #fff;
+}
+.signout:focus,
+.signout:active {
+  background: #424242;
+}

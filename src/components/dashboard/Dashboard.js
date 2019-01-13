@@ -6,12 +6,18 @@ import { connect } from "react-redux"; //the glue
 //which collection we want to connect to here
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+import { Redirect } from "react-router-dom";
 
 class Dashboard extends Component {
   state = {};
   render() {
-    console.log(this.props); //here I see my projects property from below
-    const { projects } = this.props;
+    //console.log(this.props); //here I see my projects property from below
+
+    const { projects, auth } = this.props;
+    //if auth has NOT a uid we return a redirect to the login page
+    if (!auth.uid) return <Redirect to="/signin" />;
+
+    //if auth has a uid we are logged in and render the Dashboard
     return (
       <div className="dashboard container">
         <div className="row">
@@ -29,13 +35,14 @@ class Dashboard extends Component {
 
 //map the state from the store to the props of this comp
 const mapStateToProps = state => {
-  console.log("state", state);
+  // console.log("state", state);
   return {
     //return an object
     //which properties are attached to the props of this comp
     //look in rootReducer and projectReducer
     // projects: state.project.projects  //from dummy data
-    projects: state.firestore.ordered.projects //from firestore
+    projects: state.firestore.ordered.projects, //from firestore
+    auth: state.firebase.auth
   };
 };
 //composing two higher order components

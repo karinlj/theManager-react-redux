@@ -1,3 +1,4 @@
+//action creator
 export const createProject = project => {
   /*   return { what we normally do
     type: "ADD_PROJECT",
