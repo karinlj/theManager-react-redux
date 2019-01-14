@@ -3,13 +3,18 @@ import { connect } from "react-redux"; //the glue
 //which collection we want to connect to here
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+import { Redirect } from "react-router-dom";
 
 const ProjectDetails = props => {
   //react router attaches some props automatically:
   //history, location, match
   console.log(props);
   //const id = props.match.params.id;
-  const { project } = props;
+  const { project, auth } = props;
+
+  //if auth has NOT a uid we return a redirect to the login page
+  if (!auth.uid) return <Redirect to="/signin" />;
+
   //if we have a project, return some jsx
   if (project) {
     return (
@@ -59,7 +64,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     //this object is what we attach to our prop
     //here we want the single project from the projects colletion
-    project: project
+    project: project,
+    auth: state.firebase.auth
   };
 };
 export default compose(
