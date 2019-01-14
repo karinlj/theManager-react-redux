@@ -30,7 +30,14 @@ const store = createStore(
     //passing in our config for our firebase
     reduxFirestore(fbConfig),
     //third store enchanser:
-    reactReduxFirebase(fbConfig, { attachAuthIsReady: true })
+    reactReduxFirebase(fbConfig, {
+      useFirestoreForProfile: true,
+      //we want to sync the document in the users-collection with
+      //the profile-object on the state (useFirestoreForProfile)
+
+      userProfile: "users",
+      attachAuthIsReady: true
+    })
   )
 );
 //wait with rendering the app until firebase is ready

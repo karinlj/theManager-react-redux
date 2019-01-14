@@ -6,10 +6,12 @@ import SignedOutLinks from "./SignedOutLinks";
 import { connect } from "react-redux";
 
 const Navbar = props => {
-  const { auth } = props;
-  console.log("auth", auth);
+  const { auth, profile } = props;
+  // console.log("auth", auth);
+
   //if there is a uid, we are logged in and we show <SignedInLinks />
-  const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
+  const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />;
+
   return (
     <nav className="nav nav-wrapper grey darken-3">
       <div className="container">
@@ -25,9 +27,10 @@ const Navbar = props => {
 
 const mapStateToProps = state => {
   //return an object with what we want to attach to the props
-  //console.log(state);
+  console.log(state);
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    profile: state.firebase.profile
   };
 };
 export default connect(mapStateToProps)(Navbar);
