@@ -4,6 +4,7 @@ import { connect } from "react-redux"; //the glue
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
+import moment from "moment";
 
 const ProjectDetails = props => {
   //react router attaches some props automatically:
@@ -37,7 +38,9 @@ const ProjectDetails = props => {
             <div>
               Posted by {project.authorFirstName} {project.authorLastName}
             </div>
-            <div>2nd September, 2am</div>
+            <div>
+              {" "}{moment(project.createAt.toDate()).calendar()}
+            </div>
           </div>
         </div>
       </div>

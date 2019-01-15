@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 const ProjectSummary = props => {
   //projects on the Dashboard
@@ -17,7 +18,7 @@ const ProjectSummary = props => {
           too long...use package Moment.js instead   
            */}
 
-          {project.createAt.toDate().toString()}
+          {moment(project.createAt.toDate()).calendar()}
         </p>
       </div>
     </div>
