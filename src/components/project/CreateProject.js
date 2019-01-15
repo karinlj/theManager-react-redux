@@ -19,8 +19,11 @@ class CreateProject extends Component {
   handleSubmit = e => {
     e.preventDefault();
     //console.log(this.state);
-    //calling createProject from below
+    //calling createProject from below that dispatches an action
     this.props.createProject(this.state);
+
+    //redirect the user to Dashboard
+    this.props.history.push("/");
   };
   render() {
     const { auth } = this.props;
@@ -65,13 +68,13 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     //return an object with properties that we want to add to props
-    //createProject is a function and take in the projcet,
+    //createProject is a function that takes in the projcet,
     //perform a dispatch,
     //call the action creator: createProject that we imported
     //that returns a function with a async call
     //then carry on with the dispatch on the action
 
-    createProject: project => dispatch(createProject(project)) //project=this.state Hur fatta??
+    createProject: project => dispatch(createProject(project)) //project=this.state
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CreateProject);

@@ -49,7 +49,6 @@ store.firebaseAuthIsReady.then(() => {
     document.getElementById("root")
   );
 });
-
 //different reducers for different parts of our app to handle small actions
 //combine them into a rootReducer
 

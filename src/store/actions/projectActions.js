@@ -1,5 +1,7 @@
 //action creator
 export const createProject = project => {
+  //init-project=title & content from CreateProject-component
+
   /*   return { what we normally do
     type: "ADD_PROJECT",
     project: project
@@ -11,14 +13,23 @@ export const createProject = project => {
     //pausing the dispatch
     //make async call to database - takes some time to do
     const firestore = getFirestore(); //ref to our firestore db
-    //ref to our projects collection & adding new document
+    //ref to our projects collection & adding new document to it
+
+    ///access to the profile obj
+    //logged in-on the state-firebase-profile
+    const profile = getState().firebase.profile;
+    const authorId = getState().firebase.auth.uid;
+
     firestore
       .collection("projects")
       .add({
         ...project,
-        authorFirstName: "Mats",
+        authorFirstName: profile.firstName,
+        authorLastName: profile.lastName,
+        authorId: authorId,
+        /*  authorFirstName: "Mats",
         authorLastName: "Boss",
-        authorId: 12345,
+        authorId: 12345, */
         createAt: new Date()
       })
       //when the doc is added, THEN continue with the dispatch
