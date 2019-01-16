@@ -15,7 +15,7 @@ const Navbar = props => {
   return (
     <nav className="nav nav-wrapper grey darken-3">
       <div className="container">
-        <Link to="/" className="brand-logo">
+        <Link to="/" className="logo">
           theManager
         </Link>
         {/* if someone is logged in or not */}

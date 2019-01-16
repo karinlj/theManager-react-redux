@@ -31,7 +31,8 @@ form {
     box-shadow: none;
   }
 }
-.project-list {
+.project-list,
+.notifications-list {
   margin: calc(60px - 1rem) 0;
 }
 .project-details {
@@ -46,5 +47,15 @@ form {
   &:focus,
   &:active {
     background: #424242;
+  }
+}
+
+.logo {
+  position: absolute;
+  color: #fff;
+  display: inline-block;
+  font-size: 2.1rem;
+  padding: 0;
+  @media only screen and (max-width: 992px) {
   }
 }

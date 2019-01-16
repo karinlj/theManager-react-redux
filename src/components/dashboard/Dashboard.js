@@ -13,7 +13,7 @@ class Dashboard extends Component {
   render() {
     //console.log(this.props); //here I see my projects property from below
 
-    const { projects, auth } = this.props;
+    const { projects, auth, notifications } = this.props;
     //if auth has NOT a uid we return a redirect to the login page
     if (!auth.uid) return <Redirect to="/signin" />;
 
@@ -25,7 +25,7 @@ class Dashboard extends Component {
             <ProjectList projects={projects} />
           </div>
           <div className="col s12 m5 offset-m1">
-            <Notifications />
+            <Notifications notifications={notifications} />
           </div>
         </div>
       </div>
@@ -42,12 +42,17 @@ const mapStateToProps = state => {
     //look in rootReducer and projectReducer
     // projects: state.project.projects  //from dummy data
     projects: state.firestore.ordered.projects, //from firestore
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    notifications: state.firestore.ordered.notifications
   };
 };
 //composing two higher order components
 export default compose(
   connect(mapStateToProps),
   //passing in which collection we want to connect to
-  firestoreConnect([{ collection: "projects" }])
+  firestoreConnect([
+    //my collections
+    { collection: "projects", orderBy: ["createAt", "desc"] },
+    { collection: "notification", limit: 3, orderBy: ["time", "desc"] }
+  ])
 )(Dashboard);

@@ -25,7 +25,8 @@ form textarea.materialize-textarea:focus:not([readonly]) {
   border-color: #ec407a;
   box-shadow: none;
 }
-.project-list {
+.project-list,
+.notifications-list {
   margin: calc(60px - 1rem) 0;
 }
 .project-details {
@@ -40,4 +41,11 @@ form textarea.materialize-textarea:focus:not([readonly]) {
 .signout:focus,
 .signout:active {
   background: #424242;
+}
+.logo {
+  position: absolute;
+  color: #fff;
+  display: inline-block;
+  font-size: 2.1rem;
+  padding: 0;
 }
