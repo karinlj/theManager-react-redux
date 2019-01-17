@@ -10,23 +10,6 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
-.dashboard > .row {
-  display: flex;
-  flex-direction: column;
-}
-@media only screen and (min-width: 601px) {
-  .dashboard > .row {
-    flex-direction: row;
-  }
-}
-.dashboard > .row .notifications {
-  order: -1;
-}
-@media only screen and (min-width: 601px) {
-  .dashboard > .row .notifications {
-    order: 2;
-  }
-}
 .project-list {
   margin: calc(60px - 1rem) 0;
 }
@@ -35,6 +18,45 @@ code {
 }
 .project-details {
   margin: calc(60px - 1rem) auto;
+}
+@media only screen and (max-width: 450px) {
+  .nav {
+    height: 120px;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .nav ul a:first-of-type {
+    padding-left: 0;
+  }
+}
+.nav .logo {
+  position: absolute;
+  color: #fff;
+  display: inline-block;
+  font-size: 2.1rem;
+  padding: 0;
+}
+@media only screen and (max-width: 450px) {
+  .nav .logo {
+    display: block;
+    width: 100%;
+    position: relative;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .nav .right {
+    float: none !important;
+  }
+}
+.nav .right .signout {
+  cursor: pointer;
+  background: #21242c;
+  border: none;
+  color: #fff;
+}
+.nav .right .signout:focus,
+.nav .right .signout:active {
+  background: #21242c;
 }
 form {
   padding: 20px;
@@ -56,43 +78,21 @@ form textarea.materialize-textarea:focus:not([readonly]) {
     margin: 60px 0.75rem;
   }
 }
-.signout {
-  cursor: pointer;
-  background: #21242c;
-  border: none;
-  color: #fff;
+.dashboard > .row {
+  display: flex;
+  flex-direction: column;
 }
-.signout:focus,
-.signout:active {
-  background: #21242c;
-}
-@media only screen and (max-width: 430px) {
-  .nav {
-    height: 120px;
+@media only screen and (min-width: 601px) {
+  .dashboard > .row {
+    flex-direction: row;
   }
 }
-@media only screen and (max-width: 430px) {
-  .nav ul a:first-of-type {
-    padding-left: 0;
-  }
+.dashboard > .row .notifications {
+  order: -1;
 }
-.nav .logo {
-  position: absolute;
-  color: #fff;
-  display: inline-block;
-  font-size: 2.1rem;
-  padding: 0;
-}
-@media only screen and (max-width: 430px) {
-  .nav .logo {
-    display: block;
-    width: 100%;
-    position: relative;
-  }
-}
-@media only screen and (max-width: 430px) {
-  .nav .right {
-    float: none !important;
+@media only screen and (min-width: 601px) {
+  .dashboard > .row .notifications {
+    order: 2;
   }
 }
 .footer-section {
