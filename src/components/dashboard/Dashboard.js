@@ -53,6 +53,6 @@ export default compose(
   firestoreConnect([
     //my collections
     { collection: "projects", orderBy: ["createAt", "desc"] },
-    { collection: "notification", limit: 3, orderBy: ["time", "desc"] }
+    { collection: "notifications", limit: 3, orderBy: ["time", "desc"] }
   ])
 )(Dashboard);

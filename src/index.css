@@ -34,13 +34,13 @@ form textarea.materialize-textarea:focus:not([readonly]) {
 }
 .signout {
   cursor: pointer;
-  background: #424242;
+  background: #21242c;
   border: none;
   color: #fff;
 }
 .signout:focus,
 .signout:active {
-  background: #424242;
+  background: #21242c;
 }
 .logo {
   position: absolute;
@@ -48,4 +48,79 @@ form textarea.materialize-textarea:focus:not([readonly]) {
   display: inline-block;
   font-size: 2.1rem;
   padding: 0;
+}
+.footer-section {
+  background: #34cbcb;
+  color: #fff;
+  width: 100%;
+  padding: 2rem 0;
+}
+.footer-section .row {
+  margin-bottom: 0;
+}
+.footer-section ul.container-section {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.footer-section ul.container-section li ul {
+  justify-content: flex-start;
+}
+.footer-section ul.container-section li ul li.udemy {
+  padding-top: 1rem;
+}
+.footer-section ul.container-section li ul li.udemy h5 {
+  font-weight: 300;
+}
+.footer-section ul.container-section li ul li.udemy h5 a:hover {
+  text-decoration: none;
+  opacity: 0.8;
+}
+.footer-section ul.container-section ul.lower-section li.social {
+  padding: 1rem 0;
+}
+.footer-section ul.container-section ul.lower-section li.social a {
+  text-decoration: none;
+  font-size: 0;
+  display: inline-block;
+  margin-right: 2rem;
+}
+.footer-section ul.container-section ul.lower-section li.social a:after {
+  font-family: FontAwesome;
+  font-size: 1.2rem;
+  color: #fff;
+  text-align: center;
+  border-radius: 50%;
+  transition: 1s;
+}
+.footer-section ul.container-section ul.lower-section li.social a:hover {
+  opacity: 0.8;
+}
+.footer-section ul.container-section ul.lower-section li.social a.mail:after {
+  content: "\f0e0";
+}
+.footer-section ul.container-section ul.lower-section li.social a.fb:after {
+  content: "\f09a";
+}
+.footer-section ul.container-section ul.lower-section li.social a.linkedin:after {
+  content: "\f0e1";
+}
+.footer-section ul.container-section ul.lower-section li.social a.twitter:after {
+  content: "\f099";
+}
+.footer-section ul.container-section ul.lower-section li.copy {
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+.footer-section ul.container-section .themanager {
+  font-weight: 300;
+  color: #111;
+}
+.footer-section ul.container-section a {
+  color: #c2efef;
+}
+.footer-section ul.container-section a img {
+  max-width: 130px;
+  vertical-align: middle;
 }

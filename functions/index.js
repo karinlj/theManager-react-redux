@@ -29,6 +29,7 @@ exports.projectCreated = functions.firestore
   .onCreate(doc => {
     //takes a callback func with a doc, and inside we can do something
     //create a new notification
+    console.log("Mats project created");
     const project = doc.data(); //title, content etc
     const notification = {
       //properies I want:
@@ -51,7 +52,7 @@ exports.userJoined = functions.auth.user().onCreate(user => {
     //access the data on that doc
     const newUser = doc.data();
     const notification = {
-      content: "Joined the party",
+      content: "Signed in",
       user: `${newUser.firstName} ${newUser.lastName}`,
       time: admin.firestore.FieldValue.serverTimestamp()
     };

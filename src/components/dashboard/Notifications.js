@@ -11,14 +11,17 @@ const Notifications = props => {
           <ul className="notifications">
             {/* cycle through the array and output an <li> for everyone */}
             {/* notifications && = if there are any */}
+
+            {/*  see functions/index.js */}
+
             {notifications &&
               notifications.map(notification => {
                 return (
                   <li key={notification.id}>
                     <span className="pink-text">
-                      {/*  see functions/index.js */}
-                      {notification.user}
+                      {notification.user} {"  "}
                     </span>
+
                     <span>
                       {notification.content}
                     </span>
