@@ -50,13 +50,13 @@ code {
 }
 .nav .right .signout {
   cursor: pointer;
-  background: #21242c;
+  background: #424242;
   border: none;
   color: #fff;
 }
 .nav .right .signout:focus,
 .nav .right .signout:active {
-  background: #21242c;
+  background: #424242;
 }
 form {
   padding: 20px;
