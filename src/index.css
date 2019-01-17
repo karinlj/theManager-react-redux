@@ -95,8 +95,18 @@ form textarea.materialize-textarea:focus:not([readonly]) {
     order: 2;
   }
 }
+.dashboard .card-parent {
+  display: flex;
+  justify-content: space-between;
+}
+.dashboard .card-parent .delete-btn .btn {
+  padding: 0 10px;
+}
+.dashboard .card-parent .delete-btn .btn i {
+  font-size: 1.1rem;
+}
 .footer-section {
-  background: #34cbcb;
+  background: #2fb6b6;
   color: #fff;
   width: 100%;
   padding: 2rem 0;

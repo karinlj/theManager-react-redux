@@ -29,7 +29,6 @@ exports.projectCreated = functions.firestore
   .onCreate(doc => {
     //takes a callback func with a doc, and inside we can do something
     //create a new notification
-    console.log("Mats project created");
     const project = doc.data(); //title, content etc
     const notification = {
       //properies I want:
