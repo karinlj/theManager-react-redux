@@ -4,6 +4,7 @@ import SignedInLinks from "./SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";
 //connect to the redux state
 import { connect } from "react-redux";
+//import Boozang from "../../img/boozang_logo_reverse.png";
 
 const Navbar = props => {
   const { auth, profile } = props;
@@ -28,7 +29,7 @@ const Navbar = props => {
 
 const mapStateToProps = state => {
   //return an object with what we want to attach to the props
-  //console.log(state);
+  console.log(state);
   return {
     auth: state.firebase.auth,
     profile: state.firebase.profile
