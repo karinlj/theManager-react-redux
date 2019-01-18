@@ -116,15 +116,19 @@ form textarea.materialize-textarea:focus:not([readonly]) {
 .signin form {
   margin: 0 0 60px 0;
 }
-.project-details .card-parent {
+.project-item .card-parent {
   display: flex;
   justify-content: space-between;
 }
-.project-details .card-parent .delete-btn .btn {
+.project-item .card-parent .delete-btn .btn {
   padding: 0 10px;
 }
-.project-details .card-parent .delete-btn .btn i {
+.project-item .card-parent .delete-btn .btn i {
   font-size: 1.1rem;
+}
+.project-item .project-title-link {
+  color: #2fb6b6;
+  cursor: pointer;
 }
 .footer-section {
   background: #2fb6b6;
@@ -193,7 +197,7 @@ form textarea.materialize-textarea:focus:not([readonly]) {
 .footer-section ul.container-section .themanager {
   font-weight: 300;
   color: #111;
-  font-size: 2.7em;
+  font-size: 2.6em;
 }
 .footer-section ul.container-section a {
   color: #c2efef;

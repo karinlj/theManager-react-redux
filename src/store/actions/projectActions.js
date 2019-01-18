@@ -56,7 +56,7 @@ export const deleteProject = project => {
 
     firestore
       .collection("projects")
-      .doc("project.id") //the doc???
+      .doc("project.id") //the doc?
       .delete()
       //when the doc is added, THEN continue with the dispatch
       //then() takes a callback func that will fire when we have added it

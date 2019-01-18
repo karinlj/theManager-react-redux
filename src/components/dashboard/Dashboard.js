@@ -7,9 +7,24 @@ import { connect } from "react-redux"; //the glue
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
+import { deleteProject } from "../../store/actions/projectActions";
 
 class Dashboard extends Component {
   state = {};
+
+  handleDelete = projectId => {
+    //taking as parameter the project.id
+    console.log("delete project", projectId);
+    //new array - keeping the all items that fulfill the condition
+    //  const todos = this.state.todos.filter(t => t.id !== id);
+    /*   this.setState({
+      todos
+    }); */
+    this.props.deleteProject(projectId);
+
+    //redirect the user to Dashboard
+    // this.props.history.push("/");
+  };
   render() {
     //console.log(this.props); //here I see my projects property from below
 
@@ -22,7 +37,7 @@ class Dashboard extends Component {
       <div className="dashboard container">
         <div className="row">
           <div className="col s12 m6">
-            <ProjectList projects={projects} />
+            <ProjectList projects={projects} onDelete={this.handleDelete} />
           </div>
           <div className="col s12 m5 offset-m1 notifications">
             <Notifications notifications={notifications} />
@@ -46,9 +61,24 @@ const mapStateToProps = state => {
     notifications: state.firestore.ordered.notifications
   };
 };
+
+//map dispatch to props
+const mapDispatchToProps = dispatch => {
+  return {
+    //return an object with properties that we want to add to props
+    //deleteProject is a function that takes in the projcet,
+    //perform a dispatch,
+    //call the action creator: deleteProject that we imported
+    //that returns a function with a async call
+    //then carry on with the dispatch on the action
+
+    deleteProject: id => dispatch(deleteProject(id)) //id = projectId
+  };
+};
+
 //composing two higher order components
 export default compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   //passing in which collection we want to connect to
   firestoreConnect([
     //my collections

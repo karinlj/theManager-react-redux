@@ -8,6 +8,7 @@ import { firebaseReducer } from "react-redux-firebase";
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  //all the stuff from projectReducer is stored on the state in an object called project
   project: projectReducer,
   firestore: firestoreReducer, //only from the projects collection though
   firebase: firebaseReducer //syncing firebase info incl authentication with our state
