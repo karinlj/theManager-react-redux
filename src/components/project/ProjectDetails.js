@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux"; //the glue
 //which collection we want to connect to here
 import { firestoreConnect } from "react-redux-firebase";
@@ -6,56 +6,82 @@ import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 import moment from "moment";
 
-const ProjectDetails = props => {
-  //react router attaches some props automatically:
-  //history, location, match
-  console.log(props);
-  //const id = props.match.params.id;
-  const { project, auth } = props;
+class ProjectDetails extends Component {
+  handleDelete = id => {
+    console.log("delete project", id);
+    //new array - keeping the all items that fulfill the condition
+    //  const todos = this.state.todos.filter(t => t.id !== id);
+    /*   this.setState({
+      todos
+    }); */
+  };
 
-  //if auth has NOT a uid we return a redirect to the login page
-  if (!auth.uid) return <Redirect to="/signin" />;
+  render() {
+    //react router attaches some props automatically:
+    //history, location, match
+    //const id = props.match.params.id;
 
-  //if we have a project, return some jsx
-  if (project) {
-    return (
-      <div className="container section project-details">
-        <div className="card z-depth-0">
-          <div className="card-content">
-            <span className="card-title">
-              {project.title}
-              {/*  Project Title {id} */}
-            </span>
-            <p>
-              {project.content}
-              {/*  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis sem.
+    const { project, auth } = this.props;
+    console.log("projectDetails-props", this.props);
+
+    //if auth has NOT a uid we return a redirect to the login page
+    if (!auth.uid) return <Redirect to="/signin" />;
+
+    //if we have a project, return some jsx
+    if (project) {
+      return (
+        <div className="container section project-details">
+          <div className="card z-depth-0">
+            <div className="card-content">
+              <div className="card-parent">
+                <div className="card-child">
+                  <span className="card-title">
+                    {project.title}
+                    {/*  Project Title {id} */}
+                  </span>
+                  <p>
+                    {project.content}
+                    {/*  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis sem.
           Pellentesque purus diam, aliquam in egestas a, blandit ac dolor. */}
-            </p>
-          </div>
+                  </p>
+                </div>
 
-          <div className="card-action grey-lighten-4 grey-text">
-            {/* <div>Posted by the Net Ninja</div> */}
-            <div>
-              Posted by {project.authorFirstName} {project.authorLastName}
-            </div>
-            <div>
-              {" "}{moment(project.createAt.toDate()).calendar()}
+                <div className="card-child delete-btn">
+                  <button
+                    className="btn pink lighten-1 z-depth-0"
+                    /* project: se mapStateToProps */
+                    onClick={() => this.handleDelete(project)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+
+              <div className="card-action grey-lighten-4 grey-text">
+                {/* <div>Posted by the Net Ninja</div> */}
+                <div>
+                  Posted by {project.authorFirstName} {project.authorLastName}
+                </div>
+                <div>
+                  {" "}{moment(project.createAt.toDate()).calendar()}
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
-  } else {
-    return (
-      //if project does not exist yet
-      <div className="container center">
-        <p>Loading project...</p>
-      </div>
-    );
+      );
+    } else {
+      return (
+        //if project does not exist yet
+        <div className="container center">
+          <p>Loading project...</p>
+        </div>
+      );
+    }
   }
-};
+}
 
-//ownProps is the props of the comp before we attaach anything to it
+//ownProps is the props of the comp before we attach anything to it
 const mapStateToProps = (state, ownProps) => {
   //console.log("state", state);
   const id = ownProps.match.params.id;
@@ -64,7 +90,7 @@ const mapStateToProps = (state, ownProps) => {
   //otherwise return null
   const project = projects ? projects[id] : null;
   return {
-    //this object is what we attach to our prop
+    //these object are what we attach to our prop
     //here we want the single project from the projects colletion
     project: project,
     auth: state.firebase.auth

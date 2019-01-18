@@ -95,14 +95,28 @@ form textarea.materialize-textarea:focus:not([readonly]) {
     order: 2;
   }
 }
-.dashboard .card-parent {
+.signin {
+  min-height: 500px;
+  margin-top: 60px;
+}
+.signin .card {
+  margin-top: 0;
+}
+.signin .card .intro-title {
+  font-size: 2em;
+  margin-top: 0;
+}
+.signin form {
+  margin: 0 0 60px 0;
+}
+.project-details .card-parent {
   display: flex;
   justify-content: space-between;
 }
-.dashboard .card-parent .delete-btn .btn {
+.project-details .card-parent .delete-btn .btn {
   padding: 0 10px;
 }
-.dashboard .card-parent .delete-btn .btn i {
+.project-details .card-parent .delete-btn .btn i {
   font-size: 1.1rem;
 }
 .footer-section {

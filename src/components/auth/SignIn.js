@@ -28,31 +28,55 @@ class SignIn extends Component {
     //if auth HAS a uid we return a redirect to the Dashboard
     if (auth.uid) return <Redirect to="/" />;
     return (
-      <div className="container">
-        <form onSubmit={this.handleSubmit} className="white">
-          <h5 className="grey-text text-darken-3">Sign In</h5>
-          <div className="input-field">
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" onChange={this.handleChange} />
-          </div>
-
-          <div className="input-field">
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" onChange={this.handleChange} />
-          </div>
-
-          <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-0">Login</button>
-            <div className="red-text center">
-              {/*  if authError contains a string  */}
-              {authError
-                ? <p>
-                    {" "}{authError}
-                  </p>
-                : null}
+      <div className="container signin">
+        <div className="row">
+          <div className="col s12 m6">
+            <div className="card z-depth-0 project-summary">
+              <div className="card-content grey-text text-darken-3">
+                <h1 className="intro-title">Welcome to theManager!</h1>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+                  volutpat, neque nec consequat porta.
+                </p>
+                <br />
+                <p className="">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+                  volutpat, neque nec consequat porta, magna risus consectetur ex, sed
+                  pulvinar neque nibh a neque. Lorem ipsum dolor sit amet, consectetur
+                  adipiscing elit. Phasellus volutpat, neque nec consequat porta, magna
+                  risus consectetur ex, sed pulvinar neque nibh a neque.
+                </p>
+              </div>
             </div>
           </div>
-        </form>
+
+          <div className="col s12 m5  offset-m1">
+            <form onSubmit={this.handleSubmit} className="white">
+              <h5 className="grey-text text-darken-3">Sign In</h5>
+              <div className="input-field">
+                <label htmlFor="email">Email</label>
+                <input type="email" id="email" onChange={this.handleChange} />
+              </div>
+
+              <div className="input-field">
+                <label htmlFor="password">Password</label>
+                <input type="password" id="password" onChange={this.handleChange} />
+              </div>
+
+              <div className="input-field">
+                <button className="btn pink lighten-1 z-depth-0">Login</button>
+                <div className="red-text center">
+                  {/*  if authError contains a string  */}
+                  {authError
+                    ? <p>
+                        {" "}{authError}
+                      </p>
+                    : null}
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     );
   }
