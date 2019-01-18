@@ -11,7 +11,7 @@ const Navbar = props => {
   // console.log("auth", auth);
 
   //if there is a uid, we are logged in and we show <SignedInLinks />
-  const links = auth.uid ? <SignedInLinks profile={profile} /> : null;
+  const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />;
 
   return (
     <nav className="nav nav-wrapper grey darken-3">

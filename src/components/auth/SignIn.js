@@ -4,6 +4,7 @@ import { signIn } from "../../store/actions/authActions";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+//import Boozang from "../../img/boozang.png";
 
 class SignIn extends Component {
   state = {
@@ -30,6 +31,14 @@ class SignIn extends Component {
     if (auth.uid) return <Redirect to="/" />;
     return (
       <div className="container signin">
+        {/*  <div className="right">
+          Powered by &nbsp;{" "}
+          <a href="https:boozang.com">
+            <img src={Boozang} alt="boozang logo" />
+            <br />
+            <h3 className="text-white">Try it out now!</h3>
+          </a>
+        </div> */}
         <div className="row">
           <div className="col s12 m6">
             <div className="card z-depth-0 project-summary">
