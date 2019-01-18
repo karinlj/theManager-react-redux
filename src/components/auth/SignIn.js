@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { signIn } from "../../store/actions/authActions";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 class SignIn extends Component {
   state = {
@@ -80,6 +81,9 @@ class SignIn extends Component {
                     : null}
                 </div>
               </div>
+              <p>
+                Not signed up yet? &nbsp;<NavLink to="/signup">Sign Up</NavLink>
+              </p>
             </form>
           </div>
         </div>
