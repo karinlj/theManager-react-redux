@@ -10,6 +10,13 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+.dashboard,
+.project-details,
+.create-project,
+.signin,
+.signup {
+  min-height: 500px;
+}
 .project-list {
   margin: calc(60px - 1rem) 0;
 }
@@ -96,8 +103,8 @@ form textarea.materialize-textarea:focus:not([readonly]) {
   }
 }
 .signin {
-  min-height: 500px;
   margin-top: 60px;
+  margin-bottom: 60px;
 }
 .signin .card {
   margin-top: 0;
@@ -186,6 +193,7 @@ form textarea.materialize-textarea:focus:not([readonly]) {
 .footer-section ul.container-section .themanager {
   font-weight: 300;
   color: #111;
+  font-size: 2.7em;
 }
 .footer-section ul.container-section a {
   color: #c2efef;

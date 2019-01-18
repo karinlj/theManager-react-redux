@@ -46,6 +46,12 @@ class SignIn extends Component {
                   adipiscing elit. Phasellus volutpat, neque nec consequat porta, magna
                   risus consectetur ex, sed pulvinar neque nibh a neque.
                 </p>
+                <br />
+                <p className="">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+                  volutpat, neque nec consequat porta, magna risus consectetur ex, sed
+                  pulvinar neque nibh a neque.
+                </p>
               </div>
             </div>
           </div>

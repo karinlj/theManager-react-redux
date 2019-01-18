@@ -5,6 +5,7 @@ import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 import moment from "moment";
+import { deleteProject } from "../../store/actions/projectActions";
 
 class ProjectDetails extends Component {
   handleDelete = id => {
@@ -14,6 +15,10 @@ class ProjectDetails extends Component {
     /*   this.setState({
       todos
     }); */
+    this.props.deleteProject(id);
+
+    //redirect the user to Dashboard
+    // this.props.history.push("/");
   };
 
   render() {
@@ -82,6 +87,7 @@ class ProjectDetails extends Component {
 }
 
 //ownProps is the props of the comp before we attach anything to it
+//react router attaches some props automatically: history, location, match
 const mapStateToProps = (state, ownProps) => {
   //console.log("state", state);
   const id = ownProps.match.params.id;
@@ -96,8 +102,22 @@ const mapStateToProps = (state, ownProps) => {
     auth: state.firebase.auth
   };
 };
+
+//map dispatch to props
+const mapDispatchToProps = dispatch => {
+  return {
+    //return an object with properties that we want to add to props
+    //deleteProject is a function that takes in the projcet,
+    //perform a dispatch,
+    //call the action creator: deleteProject that we imported
+    //that returns a function with a async call
+    //then carry on with the dispatch on the action
+
+    deleteProject: id => dispatch(deleteProject(id)) //project=this.state
+  };
+};
 export default compose(
   //composing 2 higher order comp
-  connect(mapStateToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect([{ collection: "projects" }])
 )(ProjectDetails);

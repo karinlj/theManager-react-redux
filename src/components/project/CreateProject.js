@@ -32,7 +32,7 @@ class CreateProject extends Component {
 
     //if auth has a uid we are logged in and render the Create Project jsx
     return (
-      <div className="container">
+      <div className="container create-project">
         <form onSubmit={this.handleSubmit} className="white">
           <h5 className="grey-text text-darken-3">Create Project</h5>
           <div className="input-field">

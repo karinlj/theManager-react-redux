@@ -1,4 +1,4 @@
-//action creator
+//action creator: createProject
 export const createProject = project => {
   //init-project=title & content from CreateProject-component
 
@@ -46,4 +46,29 @@ export const createProject = project => {
         dispatch({ type: "CREATE_PROJECT_ERROR", err });
       });
   };
-};
+}; //in authReducer: add a case to our switch
+
+//action creator: deleteProject
+export const deleteProject = project => {
+  return (dispatch, getState, { getFirestore }) => {
+    //pausing the dispatch
+    const firestore = getFirestore(); //ref to our firestore db
+
+    firestore
+      .collection("projects")
+      .doc("project.id") //the doc???
+      .delete()
+      //when the doc is added, THEN continue with the dispatch
+      //then() takes a callback func that will fire when we have added it
+      .then(() => {
+        dispatch({
+          type: "DELETE_PROJECT"
+        });
+      })
+      //if there is an error
+      //catch() takes a callback func that will fire when we recieve that error
+      .catch(err => {
+        dispatch({ type: "DELETE_PROJECT_ERROR", err });
+      });
+  };
+}; //in authReducer: add a case to our switch
