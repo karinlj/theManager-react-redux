@@ -18,15 +18,15 @@ const projectReducer = (state = initState, action) => {
       return state;
 
     case "DELETE_PROJECT":
-      console.log("Document successfully deleted!", action.project.id);
+      console.log("Document successfully deleted!", action.id);
       return {
-        ...state
+        state
       };
 
     case "DELETE_PROJECT_ERROR":
-      console.log("Error removing document");
+      console.log("Error removing document", action.id);
       return {
-        ...state
+        state
       };
 
     default:

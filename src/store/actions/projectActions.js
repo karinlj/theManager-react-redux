@@ -49,14 +49,15 @@ export const createProject = project => {
 }; //in authReducer: add a case to our switch
 
 //action creator: deleteProject
-export const deleteProject = project => {
+export const deleteProject = id => {
   return (dispatch, getState, { getFirestore }) => {
     //pausing the dispatch
     const firestore = getFirestore(); //ref to our firestore db
+    // let id = toString(id);
 
     firestore
       .collection("projects")
-      .doc("project.id") //the doc?
+      .doc(id) //the document
       .delete()
       //when the doc is added, THEN continue with the dispatch
       //then() takes a callback func that will fire when we have added it

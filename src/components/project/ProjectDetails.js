@@ -11,8 +11,8 @@ const ProjectDetails = props => {
   //history, location, match
   //const id = props.match.params.id;
 
-  const { project, auth } = this.props; //from mapStateToProps + history, location, match
-  console.log("projectDetails-props", this.props);
+  const { project, auth } = props; //from mapStateToProps + history, location, match
+  console.log("projectDetails-props", props);
 
   //if auth has NOT a uid we return a redirect to the login page
   if (!auth.uid) return <Redirect to="/signin" />;
