@@ -1,12 +1,24 @@
 import React from "react";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 const ProjectItem = props => {
   //projects on the Dashboard
 
-  const { project, onDelete } = props; //from ProjectList
+  const { project, onDelete, auth } = props; //from ProjectList
   console.log("props", props);
+
+  const deleteBtn =
+    auth.uid === project.authorId
+      ? <button
+          className="btn pink lighten-1 z-depth-0"
+          onClick={() => onDelete(project.id)}
+        >
+          {" "}Delete
+        </button>
+      : null;
+
   return (
     <div className="card z-depth-0 project-item">
       <div className="card-content grey-text text-darken-3">
@@ -28,15 +40,8 @@ const ProjectItem = props => {
           </div>
 
           {/* delete button */}
-          <div className="card-child delete-btn">
-            <button
-              className="btn pink lighten-1 z-depth-0"
-              /*    passing in the project.id */
-              onClick={() => onDelete(project.id)}
-            >
-              Delete
-            </button>
-          </div>
+          <div className="card-child delete-btn" />
+          {deleteBtn}
         </div>
 
         <p className="grey-text">
@@ -51,4 +56,13 @@ const ProjectItem = props => {
   );
 };
 
-export default ProjectItem;
+const mapStateToProps = state => {
+  //return an object with what we want to attach to the props
+  // console.log(state);
+  return {
+    auth: state.firebase.auth,
+    profile: state.firebase.profile
+  };
+};
+
+export default connect(mapStateToProps)(ProjectItem);
