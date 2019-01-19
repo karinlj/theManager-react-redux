@@ -25,6 +25,10 @@ class Dashboard extends Component {
     //redirect the user to Dashboard
     // this.props.history.push("/");
   };
+
+  handleEdit = projectId => {
+    console.log("edit project", projectId);
+  };
   render() {
     //console.log(this.props); //here I see my projects property from below
 
@@ -37,7 +41,11 @@ class Dashboard extends Component {
       <div className="dashboard container">
         <div className="row">
           <div className="col s12 m6">
-            <ProjectList projects={projects} onDelete={this.handleDelete} />
+            <ProjectList
+              projects={projects}
+              onDelete={this.handleDelete}
+              onEdit={this.handleEdit}
+            />
           </div>
           <div className="col s12 m5 offset-m1 notifications">
             <Notifications notifications={notifications} />

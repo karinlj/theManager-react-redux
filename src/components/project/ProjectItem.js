@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 const ProjectItem = props => {
   //projects on the Dashboard
 
-  const { project, onDelete, auth } = props; //from ProjectList
+  const { project, onDelete, onEdit, auth } = props; //from ProjectList
   console.log("props", props);
 
   const deleteBtn =
@@ -19,6 +19,18 @@ const ProjectItem = props => {
         </button>
       : null;
 
+  const editBtn =
+    auth.uid === project.authorId
+      ? <Link to={"/edit/project/" + project.id}>
+          <button
+            className="btn pink lighten-1 z-depth-0"
+            onClick={() => onEdit(project.id)}
+          >
+            {" "}Edit
+          </button>
+        </Link>
+      : null;
+
   return (
     <div className="card z-depth-0 project-item">
       <div className="card-content grey-text text-darken-3">
@@ -26,7 +38,7 @@ const ProjectItem = props => {
           <div className="card-child">
             <Link
               to={"/project/" + project.id}
-              key={project.id}
+              /*  */
               className="project-title-link"
             >
               <span className="card-title">
@@ -40,8 +52,11 @@ const ProjectItem = props => {
           </div>
 
           {/* delete button */}
-          <div className="card-child delete-btn" />
-          {deleteBtn}
+          <div className="card-child delete-btn">
+            {deleteBtn}
+            <br />
+            {/*    {editBtn} */}
+          </div>
         </div>
 
         <p className="grey-text">
