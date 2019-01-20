@@ -18,9 +18,10 @@ class EditProject extends Component {
     });
   };
 
-  handleSubmit = e => {
+  handleSave = e => {
     e.preventDefault();
-    //console.log(this.state);
+    console.log("EditProject state", this.state);
+
     //calling createProject from below that dispatches an action
     //  this.props.createProject(this.state);
 
@@ -42,10 +43,6 @@ class EditProject extends Component {
             <input type="text" id="title" onChange={this.handleChange} />
           </div>
 
-          {/*  <p>
-            {" "}{project.content}
-          </p> */}
-
           <div className="input-field">
             <label htmlFor="content">Content</label>
             <textarea
@@ -56,7 +53,9 @@ class EditProject extends Component {
           </div>
 
           <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-0">Save</button>
+            <button className="btn pink lighten-1 z-depth-0" onClick={this.handleSave}>
+              Save
+            </button>
           </div>
         </form>
       </div>

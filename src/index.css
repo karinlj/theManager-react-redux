@@ -154,11 +154,11 @@ form textarea.materialize-textarea:focus:not([readonly]) {
   display: flex;
   justify-content: space-between;
 }
-.project-item .card-parent .delete-btn .btn {
+.project-item .card-parent .btns .btn {
   padding: 0 10px;
 }
-.project-item .card-parent .delete-btn .btn i {
-  font-size: 1.1rem;
+.project-item .card-parent .btns .btn.edit {
+  margin-top: 0.6rem;
 }
 .project-item .project-title-link {
   color: #2fb6b6;
