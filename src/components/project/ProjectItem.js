@@ -15,14 +15,16 @@ const ProjectItem = props => {
           className="btn pink lighten-1 z-depth-0"
           onClick={() => onDelete(project.id)}
         >
-          {" "}Delete
+          <i className="fa fa-trash" aria-hidden="true" />
         </button>
       : null;
 
   const editBtn =
     auth.uid === project.authorId
       ? <Link to={"/edit/project/" + project.id}>
-          <button className="btn pink lighten-1 z-depth-0 edit"> Edit</button>
+          <button className="btn pink lighten-1 z-depth-0 edit">
+            <i className="fa fa-pencil" aria-hidden="true" />
+          </button>
         </Link>
       : null;
 

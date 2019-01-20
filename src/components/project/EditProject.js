@@ -20,16 +20,20 @@ class EditProject extends Component {
 
   handleSave = e => {
     e.preventDefault();
-    console.log("EditProject state", this.state);
+    // console.log("EditProject state", this.state);
 
     //calling createProject from below that dispatches an action
     //  this.props.createProject(this.state);
 
     //redirect the user to Dashboard
-    this.props.history.push("/");
+    //this.props.history.push("/");
   };
   render() {
-    const { auth, project } = this.props;
+    const { auth, project, projectContent, projectTitle } = this.props;
+    // console.log("project", project);
+    console.log("projectTitle", projectTitle);
+    console.log("projectContent", projectContent);
+
     //if auth has NOT a uid we return a redirect to the login page
     //if (!auth.uid) return <Redirect to="/signin" />;
 
@@ -40,15 +44,23 @@ class EditProject extends Component {
           <h5 className="grey-text text-darken-3">Edit Project</h5>
           <div className="input-field">
             <label htmlFor="title">Title</label>
-            <input type="text" id="title" onChange={this.handleChange} />
+            <br />
+            <textarea
+              className="materialize-textarea"
+              id="title"
+              onChange={this.handleChange}
+              value={projectTitle}
+            />
           </div>
 
           <div className="input-field">
             <label htmlFor="content">Content</label>
+            <br />
             <textarea
               className="materialize-textarea"
               id="content"
               onChange={this.handleChange}
+              value={projectContent}
             />
           </div>
 
@@ -65,17 +77,22 @@ class EditProject extends Component {
 //ownProps is the props of the comp before we attach anything to it
 //react router attaches some props automatically: history, location, match
 const mapStateToProps = (state, ownProps) => {
-  //console.log("state", state);
+  console.log("EditProject render-state", state);
+
   const id = ownProps.match.params.id;
   const projects = state.firestore.data.projects;
   //if we have projects, find the project of the projects obj with that id
   //otherwise return null
   const project = projects ? projects[id] : null;
+  const projectContent = projects ? projects[id].content : null;
+  const projectTitle = projects ? projects[id].title : null;
   return {
     //these object are what we attach to our prop
     //here we want the single project from the projects colletion
     project: project,
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    projectContent: projectContent,
+    projectTitle: projectTitle
   };
 };
 
