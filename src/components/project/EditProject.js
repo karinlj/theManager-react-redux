@@ -40,13 +40,13 @@ class EditProject extends Component {
     //if auth has a uid we are logged in and render the Create Project jsx
     return (
       <div className="container create-project">
-        <form onSubmit={this.handleSubmit} className="white">
+        <form className="white">
           <h5 className="grey-text text-darken-3">Edit Project</h5>
           <div className="input-field">
             <label htmlFor="title">Title</label>
             <br />
-            <textarea
-              className="materialize-textarea"
+            <input
+              type="text"
               id="title"
               onChange={this.handleChange}
               value={projectTitle}
