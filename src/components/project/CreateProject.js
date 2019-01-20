@@ -74,7 +74,7 @@ const mapDispatchToProps = dispatch => {
     //that returns a function with a async call
     //then carry on with the dispatch on the action
 
-    createProject: project => dispatch(createProject(project)) //project=this.state
+    createProject: project => dispatch(createProject(project)) //project=this.state from above
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CreateProject);

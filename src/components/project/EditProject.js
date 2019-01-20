@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+import { Redirect } from "react-router-dom";
 //import { createProject } from "../../store/actions/projectActions";
-//import { Redirect } from "react-router-dom";
 
 class EditProject extends Component {
   state = {
@@ -35,7 +35,7 @@ class EditProject extends Component {
     console.log("projectContent", projectContent);
 
     //if auth has NOT a uid we return a redirect to the login page
-    //if (!auth.uid) return <Redirect to="/signin" />;
+    if (!auth.uid) return <Redirect to="/signin" />;
 
     //if auth has a uid we are logged in and render the Create Project jsx
     return (
@@ -83,13 +83,13 @@ const mapStateToProps = (state, ownProps) => {
   const projects = state.firestore.data.projects;
   //if we have projects, find the project of the projects obj with that id
   //otherwise return null
-  const project = projects ? projects[id] : null;
+  //  const project = projects ? projects[id] : null;
   const projectContent = projects ? projects[id].content : null;
   const projectTitle = projects ? projects[id].title : null;
   return {
     //these object are what we attach to our prop
     //here we want the single project from the projects colletion
-    project: project,
+    // project: project,
     auth: state.firebase.auth,
     projectContent: projectContent,
     projectTitle: projectTitle
