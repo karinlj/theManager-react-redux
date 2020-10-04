@@ -1,7 +1,12 @@
 # theManager Boozang
 
 ## Description
-A site in progress to learn test automation and the Boozang tool. 
+Project manager app built with React for learning the Boozang tool.
+Firebase as backend, December 2019. 
+
+Url: http://themanager.boozang.com/
+
+![Screenshot](/src/img/screenshot.jpg?raw=true "Screenshot")  
 
 ## Installation
 To install
@@ -10,7 +15,11 @@ To install
 
 To run
 
-```npm start```
+```npm start```  
+
+## To build
+```npm run build```   
+Then use the dist folder you get.
 
 ## Built With
 * React.js
